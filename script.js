@@ -1,58 +1,62 @@
-function compressImage() {
-  const input = document.getElementById("imageInput");
-  const file = input.files[0];
+const upload = document.getElementById("upload");
+const controls = document.getElementById("controls");
+const originalSizeEl = document.getElementById("originalSize");
 
-  if (!file) {
-    alert("Please select an image");
-    return;
-  }
+const compressionSlider = document.getElementById("compression");
+const compressionValue = document.getElementById("compressionValue");
+const compressBtn = document.getElementById("compressBtn");
 
-  if (file.size > 5 * 1024 * 1024) {
-    alert("Please upload image below 5MB");
-    return;
-  }
+const result = document.getElementById("result");
+const compressedSizeEl = document.getElementById("compressedSize");
+const reductionEl = document.getElementById("reduction");
+const downloadBtn = document.getElementById("downloadBtn");
 
-  const img = new Image();
+let file;
+let img = new Image();
+
+upload.addEventListener("change", () => {
+  file = upload.files[0];
+  if (!file) return;
+
+  originalSizeEl.textContent =
+    (file.size / 1024).toFixed(2) + " KB";
+
+  controls.classList.remove("hidden");
+
   const reader = new FileReader();
-
-  reader.onload = function (e) {
-    img.src = e.target.result;
-  };
-
-  img.onload = function () {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    ctx.drawImage(img, 0, 0);
-
-    let quality = 0.9;
-
-    function tryCompress() {
-      canvas.toBlob(
-        function (blob) {
-          if (blob.size <= 1024 * 1024 || quality <= 0.1) {
-            const url = URL.createObjectURL(blob);
-            document.getElementById("output").innerHTML = `
-              <p>Compressed Size: ${(blob.size / 1024).toFixed(2)} KB</p>
-              <a href="${url}" download="compressed-image.jpg">
-                <button>Download Image</button>
-              </a>
-            `;
-          } else {
-            quality -= 0.05;
-            tryCompress();
-          }
-        },
-        "image/jpeg",
-        quality
-      );
-    }
-
-    tryCompress();
-  };
-
+  reader.onload = e => img.src = e.target.result;
   reader.readAsDataURL(file);
-}
+});
+
+compressionSlider.addEventListener("input", () => {
+  compressionValue.textContent = compressionSlider.value;
+});
+
+compressBtn.addEventListener("click", () => {
+  if (!img.src) return;
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = img.width;
+  canvas.height = img.height;
+  ctx.drawImage(img, 0, 0);
+
+  const quality = compressionSlider.value / 100;
+  const compressedData = canvas.toDataURL("image/jpeg", quality);
+
+  const compressedKB =
+    Math.round((compressedData.length * 3) / 4 / 1024);
+
+  compressedSizeEl.textContent = compressedKB + " KB";
+
+  const reduction =
+    ((1 - compressedKB / (file.size / 1024)) * 100).toFixed(1);
+
+  reductionEl.textContent = reduction + "%";
+
+  downloadBtn.href = compressedData;
+  downloadBtn.download = "compressed-image.jpg";
+
+  result.classList.remove("hidden");
+});
