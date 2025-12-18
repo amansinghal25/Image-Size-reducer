@@ -11,6 +11,8 @@ const compressedSizeEl = document.getElementById("compressedSize");
 const reductionEl = document.getElementById("reduction");
 const downloadBtn = document.getElementById("downloadBtn");
 
+const presetButtons = document.querySelectorAll(".presets button");
+
 let file;
 let img = new Image();
 
@@ -30,6 +32,14 @@ upload.addEventListener("change", () => {
 
 compressionSlider.addEventListener("input", () => {
   compressionValue.textContent = compressionSlider.value;
+});
+
+presetButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const value = btn.getAttribute("data-value");
+    compressionSlider.value = value;
+    compressionValue.textContent = value;
+  });
 });
 
 compressBtn.addEventListener("click", () => {
