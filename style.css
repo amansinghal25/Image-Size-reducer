@@ -35,10 +35,32 @@ input[type="range"] {
 label {
   font-size: 14px;
   display: block;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
-button {
+.presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.presets button {
+  padding: 10px;
+  border: 1px solid #2563eb;
+  background: white;
+  color: #2563eb;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.presets button:hover {
+  background: #2563eb;
+  color: white;
+}
+
+button#compressBtn {
   width: 100%;
   margin-top: 18px;
   padding: 12px;
@@ -50,7 +72,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button#compressBtn:hover {
   background: #1e40af;
 }
 
