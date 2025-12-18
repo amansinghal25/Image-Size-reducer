@@ -1,29 +1,30 @@
 body {
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
-  background: #f2f4f8;
+  background: #f4f6fa;
+  color: #333;
 }
 
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin-bottom: 10px;
+}
+
+/* TOOL CARD */
 .container {
   max-width: 420px;
-  margin: 40px auto;
+  margin: -30px auto 40px;
   background: white;
   padding: 20px;
   border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 6px;
-}
-
-.subtitle {
-  text-align: center;
-  color: #555;
-  font-size: 14px;
-  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 input[type="file"],
@@ -51,7 +52,6 @@ label {
   background: white;
   color: #2563eb;
   border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
 }
 
@@ -72,10 +72,6 @@ button#compressBtn {
   cursor: pointer;
 }
 
-button#compressBtn:hover {
-  background: #1e40af;
-}
-
 #result {
   margin-top: 20px;
   text-align: center;
@@ -91,13 +87,30 @@ button#compressBtn:hover {
   text-decoration: none;
 }
 
-.footer {
-  font-size: 12px;
-  color: #666;
-  text-align: center;
+.hidden {
+  display: none;
+}
+
+/* SEO SECTIONS */
+.seo, .faq {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.seo h2, .faq h2 {
+  margin-bottom: 10px;
+}
+
+.faq h3 {
   margin-top: 20px;
 }
 
-.hidden {
-  display: none;
+/* FOOTER */
+.footer {
+  background: #111827;
+  color: #ccc;
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
 }
