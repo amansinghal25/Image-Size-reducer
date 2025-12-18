@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Image Size Reducer – Compress Images Online Free</title>
-  <meta name="description" content="Compress image size online instantly. Reduce JPG and PNG image size without upload. Fast, free & browser based.">
+  <meta name="description" content="Compress image size online using smart presets. WhatsApp, Instagram, Email and High Quality image compression.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
@@ -13,13 +13,20 @@
   <div class="container">
     <h1>Image Size Reducer</h1>
     <p class="subtitle">
-      Reduce image size instantly using a simple compression slider.
+      Compress images instantly using smart presets.
     </p>
 
     <input type="file" id="upload" accept="image/*">
 
     <div id="controls" class="hidden">
       <p><strong>Original Size:</strong> <span id="originalSize"></span></p>
+
+      <div class="presets">
+        <button data-value="40">WhatsApp / DP</button>
+        <button data-value="55">Instagram</button>
+        <button data-value="70">Email</button>
+        <button data-value="85">High Quality</button>
+      </div>
 
       <label>
         Compression Level:
@@ -37,7 +44,7 @@
     </div>
 
     <p class="footer">
-      🔒 Files never leave your device. 100% browser-based.
+      🔒 Images are processed locally in your browser.
     </p>
   </div>
 
