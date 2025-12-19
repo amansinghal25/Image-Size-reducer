@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Size Reducer – WebToolsHub</title>
+
+  <meta name="description"
+    content="Free online image size reducer. Compress images for WhatsApp, Instagram and email without uploading.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">
+    <img src="logo.png" alt="WebToolsHub Logo">
+    <span>WebToolsHub</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tools.html" class="active">Tools</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section class="tools-section">
+  <h1>Image Size Reducer</h1>
+  <p>Compress images instantly in your browser.</p>
+
+  <div class="tool-card">
+    <input type="file" id="upload" accept="image/*">
+
+    <div id="controls" class="hidden">
+      <p><strong>Original Size:</strong> <span id="originalSize"></span></p>
+
+      <div class="presets">
+        <button data-value="40">WhatsApp</button>
+        <button data-value="55">Instagram</button>
+        <button data-value="70">Email</button>
+        <button data-value="85">High Quality</button>
+      </div>
+
+      <label>
+        Compression Level:
+        <span id="compressionValue">70</span>%
+        <input type="range" id="compression" min="10" max="90" value="70">
+      </label>
+
+      <button id="compressBtn">Compress Image</button>
+    </div>
+
+    <div id="result" class="hidden">
+      <p><strong>Compressed Size:</strong> <span id="compressedSize"></span></p>
+      <p><strong>Size Reduced:</strong> <span id="reduction"></span></p>
+      <a id="downloadBtn">Download Image</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  © 2025 WebToolsHub
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
